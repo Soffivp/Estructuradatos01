@@ -11,7 +11,7 @@ package arreglos;
 public class Arreglos {
 
     public static void main(String[] args) {
-        int opc, num, lim;
+        int opc, num = 0, lim,encontrado = 0;
         int ev = 0;
 
         Metodo_Arreglos obj = new Metodo_Arreglos();
@@ -27,15 +27,24 @@ public class Arreglos {
 
                     break;
                 case 2:
-                    obj.presentar(arreglo,ev);
+                    obj.presentar(arreglo, ev);
                 case 3:
-                    ev =obj.insertarUltimo(arreglo,ev);
+                    ev = obj.insertarUltimo(arreglo, ev);
                 case 4:
                     obj.insertarInicio(arreglo, ev);
                 case 5:
                     ev = obj.insertarInicio(arreglo, ev);
                 case 6:
                     ev = obj.ordenarArreglo(arreglo, ev);
+                case 7:
+                    System.out.println("INGRESAR EL NUMERO A BUSCAR");
+                    num = obj.entrada.nextInt();
+                        encontrado= obj.encontrarbinaria(arreglo, ev, lim, num);
+                        if(encontrado != -1){
+                            System.out.println("Esta en posicion" + encontrado);
+                        }else 
+                            System.out.println("Elemento no existe");
+         
                     break;
                 default:
                     throw new AssertionError();

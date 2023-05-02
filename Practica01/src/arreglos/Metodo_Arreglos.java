@@ -20,7 +20,8 @@ public class Metodo_Arreglos {
         System.out.println("3. Llenar espacio vacio");
         System.out.println("4. Recorrer arreglo a la derecha");
         System.out.println("5. Llenar arreglo ordenado");
-        System.out.println("6. Salir \n");
+        System.out.println("6. binaria");
+        System.out.println("7. Salir \n");
 
         return entrada.nextInt();
     }
@@ -71,6 +72,7 @@ public class Metodo_Arreglos {
     }
 
     public int ordenarArreglo(int[] a, int ev) {
+        // metodo borbuja
         int pos = 0;
         int num = 0;
         if (ev < a.length) {
@@ -92,6 +94,74 @@ public class Metodo_Arreglos {
             System.out.println("Arreglo lleno");
         }
 
+        return ev;
+    }
+
+    public int encontrarbinaria(int[] arr, int inicio, int fin, int num) {
+        int medio = 0;
+        ordenarArreglo(arr, num);
+        if (inicio <= fin) {
+            medio = (inicio + fin) / 2;
+            if (arr[medio] == num) {
+                return medio;
+            } else if (num > arr[medio]) {
+                return encontrarbinaria(arr, inicio, fin, num);
+            } else {
+                return encontrarbinaria(arr, inicio, fin, num);
+            }
+        } else {
+            return -1;
+        }
+    }
+
+    public void ordenarreglo(int[] arr, int inicio, int fin) {
+        int a = 0;
+        int b = 0;
+        a = inicio;
+        b = fin;
+        int pv = arr[(inicio + fin) / 2];
+
+        while (arr[b] < pv) {
+            b--;
+            if (a < b) {
+                a = b;
+                b = pv;
+            }
+            a++;
+            b--;
+        }
+        while (a < b) {
+            if (a < b) {
+
+            }
+        }
+    }
+
+    public void recorrerIzquierda(int[] a, int ev, int b) {
+        for (int i = ev; i > b; i++) {
+            a[i] = a[i + 1];
+
+        }
+
+    }
+    public int secuencial(int[] arr, int num,int ev){
+        for (int i = 0; i < ev; i++) {
+            if(arr[i] == num){
+            return i;
+            }
+        }
+    return -1;
+    
+    }
+
+    public int eliminar(int[] arr, int num, int ev) {
+
+        int pos = secuencial(arr, num, ev);
+        if (pos != -1) {
+            recorrerIzquierda(arr, pos, ev);
+            ev--;
+
+        }
         return ev;
     }
 
