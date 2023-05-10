@@ -17,6 +17,7 @@ public class Arreglos {
         Metodo_Arreglos obj = new Metodo_Arreglos();
         System.out.println("Ingrese el limite del arreglo ");
         lim = obj.entrada.nextInt();
+        
         int[] arreglo = new int[lim];
         //elementos validos
         do {
