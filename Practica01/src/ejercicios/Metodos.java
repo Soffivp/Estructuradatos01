@@ -45,7 +45,7 @@ public class Metodos {
 // ejercicio 3 
 
     public int fibonaci(int num) {
-      //  int num = 0;
+  /*    //  int num = 0;
 
             if (num == 0) {
                 return 0;
@@ -56,7 +56,7 @@ public class Metodos {
             }
             
         
-       // num++;
+       // num++;*/
     return num;
     }
 // ejercicio 6
