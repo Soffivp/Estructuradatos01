@@ -27,27 +27,29 @@ public class Main {
                     System.out.println("Ingrese el numero");
                     num = obj.entrada.nextInt();
                     System.out.println("El fibonacci de " + num + " es " + obj.fibonaci(num));
+                    break;
+
                 case 3:
                     System.out.println("Ingrese la base");
                     num = obj.entrada.nextInt();
                     System.out.println("Ingrese el exponente");
                     exp = obj.entrada.nextInt();
                     System.out.println(num + " Elevado a la potencia " + exp + " es " + obj.potencia(num, exp));
+                    break;
                 case 4:
                     System.out.println("Ingrese el primero numero");
                     num = obj.entrada.nextInt();
                     System.out.println("Ingrese el segundo numero");
                     exp = obj.entrada.nextInt();
                     System.out.println(" El minimo comun divisir entre " + num + " y " + exp + " es " + obj.mcd(num, exp));
-
+                    break;
                 case 5:
                     System.out.println("Ingrese el primero numero");
                     num = obj.entrada.nextInt();
                     System.out.println("Ingrese el segundo numero");
                     exp = obj.entrada.nextInt();
                     System.out.println(num + exp);
-                default:
-
+                    break;
             }
 
         } while (opc != 0);

@@ -6,8 +6,6 @@ package ejercicios;
  */
 public class Metodos {
 
-//ejercicio 1 Calcular el número de elementos negativos, cero y positivos de un vector dado de n
-//elementos    
     public void contarnumeros(int[] a) {
         int positivos = 0, negativos = 0, cero = 0;
 
@@ -24,42 +22,23 @@ public class Metodos {
 
     }
 
-    //ejercicio2   Escriba un programa que me permita almacenar en un arreglo B, el factorial de 10
-//números almacenados previamente en un arreglo A.
-    // este arreglo se va a llevar en el main al enviarle cada uno de los numeros
-    public int factorial(int[] a) {
-        int b = 0;
-
-        for (int i = 0; i < a.length; i++) {
-            b = a[i];
-
-            if (b == 1) {
-                return b;
-            } else {
-                return b * factorial(b - 1);
-            }
+    public int factorial(int a) {
+        if (a == 1) {
+          return 1;
+        } else {
+        return  a * factorial(a - 1);
         }
-
-        return b;
     }
-// ejercicio 3 
 
     public int fibonaci(int num) {
-  /*    //  int num = 0;
-
-            if (num == 0) {
-                return 0;
-            } else if (num == 1) {
-                return 1;
-            } else {
-                return fibonaci(num - 1) + fibonaci(num - 2);
-            }
-            
-        
-       // num++;*/
-    return num;
+        if (num == 0) {
+            return 0;
+        } else if (num == 1) {
+            return 1;
+        } else {
+            return fibonaci(num - 1) + fibonaci(num - 2);
+        }
     }
-// ejercicio 6
 
     public void llenarArreglo(int[] a, int num) {
         double b;

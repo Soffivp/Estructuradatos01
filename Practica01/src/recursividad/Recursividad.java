@@ -38,33 +38,36 @@ public class Recursividad {
     }
 
     public int fibonaci(int num) {
-        if (num == 0) 
+        if (num == 0) {
             return 0;
-        else if (num == 1) 
+        } else if (num == 1) {
             return 1;
-        else 
-            return fibonaci(num-1) + fibonaci(num-2);
+        } else {
+            return fibonaci(num - 1) + fibonaci(num - 2);
+        }
     }
-     public int potencia (int num, int exp){
-     
-     if (exp == 0)
-         return 1;
-     else if(exp == 1)
-         return num;
-     else
-        return num * potencia(num,exp-1);
-     }
-     
-     public int mcd (int a, int b){
-     if ( b == 0)
-         return a;
-     else 
-         return  mcd (b,a % b);
-     }
-     
-    public int invertir (int a){
-   
-    
-return (a%10+invertir(a/10));
-        } 
+
+    public int potencia(int num, int exp) {
+
+        if (exp == 0) {
+            return 1;
+        } else if (exp == 1) {
+            return num;
+        } else {
+            return num * potencia(num, exp - 1);
+        }
+    }
+
+    public int mcd(int a, int b) {
+        if (b == 0) {
+            return a;
+        } else {
+            return mcd(b, a % b);
+        }
+    }
+
+    public int invertir(int a) {
+
+        return (a % 10 + invertir(a / 10));
+    }
 }

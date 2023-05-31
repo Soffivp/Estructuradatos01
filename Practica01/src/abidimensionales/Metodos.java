@@ -1,5 +1,6 @@
 package abidimensionales;
 
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -116,14 +117,7 @@ public class Metodos {
         }
     }
 
-    /*Leer una matriz de n X m elementos y calcular la suma de cada una de sus filas y columnas,
-dejando dichos resultados en dos vectores, uno de la suma de filas y otro de columnas.*/
     public void sumaVectores(int[][] arr) {
-        /*+{{1,2,0,3}
-                {1,2,1,1}
-                {2,1,3,2}
-                {2,1,2,1}}*/
-
         int filas = 0;
         int comunnas = 0;
 
@@ -145,31 +139,17 @@ dejando dichos resultados en dos vectores, uno de la suma de filas y otro de col
 
     }
 
-    /*
-2. Dado un arreglo de dos dimensiones de m x n elementos numéricos de tipo entero, desarrollar
-un programa para sumar los elementos de la diagonal invertida.*/
     public void sumarDiagonal(int[][] arr) {
-        /*+{{1,2,0,3}
-            {1,2,1,1}
-            {2,1,3,2}
-            {2,1,2,1}}*/
+        /* {{7,6,1}
+            {3,8,9}
+            {2,4,1}*/
         int suma = 0;
 
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[i].length; j++) {
-                if (i == j) {
-                    suma += arr[i][j];
-                }
-            }
-
-        }
-        System.out.printf("La suma de la diagonal principal es: %s", suma);
+        suma = arr[0][2] + arr[1][1] + arr[2][0];
+        System.out.printf("La suma de la diagonal invertida es: %s", suma);
 
     }
 
-    /*  
-3. Dada una matriz L de n X m elementos, diseñar un programa que calcule la suma de números
-pares e impares contenidos en ella.*/
     public void sumarpar(int[][] arr) {
         int par = 0;
         int impar = 0;
@@ -198,11 +178,6 @@ b. Media general de la clase
 c. Media de la clase en cada asignatura
 d. Porcentaje de faltas (no presentado a examen)*/
     public void calificaciones(double[][] arr) {
-        /*{{8,7,9,3,5}
-       {9,5,7,3,7}
-       {9,5,7,3,7}
-       {7,10,6,8,2}}
-         */
         double suma = 0;
         double promedioAlumno = 0;
         double promedioGemeral = 0;
@@ -230,7 +205,7 @@ d. Porcentaje de faltas (no presentado a examen)*/
                     asig5 += arr[i][j];
                 }
                 if (arr[i][j] == 0) {
-                    faltas += 0;
+                    faltas++;
                 }
             }
             promedioAlumno = promedioAlumno / 5;
@@ -254,64 +229,294 @@ d. Porcentaje de faltas (no presentado a examen)*/
                 + "La media de la asignatura 5 es: %.2f\n"
                 + "Porcentaje de faltas es: %.2f\n",
                 promedioGemeral, asig1, asig2,
-                asig3, asig4, asig5,faltas);
-
+                asig3, asig4, asig5, faltas);
     }
 
-    /*    
-5. Una empresa tiene diez almacenes y desea un programa que lea sus ventas trimestrales y
-calcule:
-a. La media de las ventas mensuales para cada uno de sus almacenes
-b. Obtener un listado de los almacenes cuyas ventas mensuales son superiores a la media
-total (índice del almacén)
-c. Muestre cuál de los meses ha sido el más productivo y cuál el menos productivo.
-6. Realice un programa que me permita realizar (según un menú presentado al usuario):
-a. La multiplicación de dos matrices bidimensionales.
-b. Suma de matrices.
-c. Resta de matrices.
-d. Multiplicación por un escalar.
-e. Traspuesta de una matriz.
-(Considérese las restricciones necesarias para cada operación).*/
-    
-    
+    public void ventas(double[][] arr) {
+        double[][] media = new double[10][1];
+        double mediaGeneral = 0;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                media[i][0] += arr[i][j];
+            }
+            media[i][0] = media[i][0] / 4;
+            mediaGeneral += media[i][0];
+            System.out.printf("Media de las ventas del local %d: %.2f\n", i + 1, media[i][0]);
+        }
+        mediaGeneral = mediaGeneral / 10;
+        for (int i = 0; i < media.length; i++) {
+            if (media[i][0] > mediaGeneral) {
+                System.out.printf("Local por enciam de la media : %d\n\n", i + 1);
+            }
+        }
+        for (int i = 0; i < arr.length; i++) {
+
+            if (arr[i][0] > arr[i][1] && arr[i][0] > arr[i][2] && arr[i][0] > arr[i][3]) {
+                System.out.println("Trimestre más productivo del local es el primero");
+            }
+            if (arr[i][1] > arr[i][0] && arr[i][1] > arr[i][2] && arr[i][1] > arr[i][3]) {
+                System.out.println("Trimestre más productivo del local es el segundo");
+            }
+            if (arr[i][2] > arr[i][1] && arr[i][2] > arr[i][0] && arr[i][2] > arr[i][3]) {
+                System.out.println("Trimestre más productivo del local es el tercero");
+            }
+            if (arr[i][3] > arr[i][0] && arr[i][3] > arr[i][2] && arr[i][3] > arr[i][1]) {
+                System.out.println("Trimestre más productivo del local es el cuarto");
+            }
+
+        }
+    }
+
+
     /*
 7. Realice un programa que me permita realizar el ordenamiento de una matriz bidireccional (el
 ordenamiento debe ser realizado en la misma matriz)
-8. Diseñe un programa que me permita implementar el algoritmo del “cuadrado mágico” de un
+     */
+    public void ordenar(int[][] a) {
+        int aux;
+        int k = 0;
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a[i].length; j++) {
+                for (int x = 0; x < a.length; x++) {
+                    for (int y = 0; y < a[i].length; y++) {
+                        if (a[i][j] < a[x][y]) {
+                            aux = a[i][j];
+                            a[i][j] = a[x][y];
+                            a[x][y] = aux;
+                        }
+                    }
+                }
+            }
+        }
+
+        System.out.print("Matriz ordenada\n");
+
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a[i].length; j++) {
+                System.out.printf("%d ", a[i][j]);
+            }
+            System.out.print("\n");
+        }
+
+    }
+
+    /*8. Diseñe un programa que me permita implementar el algoritmo del “cuadrado mágico” de un
 número de filas y columnas N ingresado por teclado. Ej:
 8 1 6 15
 3 5 7 15
 4 9 2 15
-15 15 15 15
+15 15 15 15*/
+    public void cuadroMagico(int num) {
+
+        int i_ant = 0;
+        int j_ant = 0;
+
+        int punto_ini = num / 2;
+
+        int[][] matriz_magica = new int[num][num];
+
+        int temp = 1;
+
+        for (int i = 0; i < num; i++) {
+            for (int j = 0; j < num; j++) {
+                matriz_magica[i][j] = 0;
+            }
+        }
+        int i = 0;
+        int j = punto_ini;
+
+        while (temp != (num * num) + 1) {
+            if (matriz_magica[i][j] == 0) {
+                matriz_magica[i][j] = temp;
+            } else {
+                i = i_ant + 1;
+                j = j_ant;
+                matriz_magica[i][j] = temp;
+            }
+
+            i_ant = i;
+            j_ant = j;
+
+            temp++;
+            j++;
+            i--;
+            if (i < 0 && j == num) {
+                i = num - 1;
+                j = 0;
+            } else if (i < 0) {
+                i = i + num;
+            } else if (j == num) {
+                j = 0;
+            }
+        }
+        System.out.print("Matriz ordenada\n");
+
+        for (int l = 0; l < matriz_magica.length; l++) {
+            for (int k = 0; k < matriz_magica[l].length; k++) {
+                System.out.printf("%d ", matriz_magica[l][k]);
+            }
+            System.out.print("\n");
+        }
+
+    }
+
+    /*
 9. Diseñe un programa que permita encontrar el determinante de una matriz.
+     */
+    public void determinante(int[][] arr) {
+        /*+{{1,2,0,3}{1,2,1,1}{2,1,3,2}{2,1,2,1}}*/
+        int j, k, m = 0, suma = 0, suma2 = 0, mult = 1, mult2 = 1;
+
+        mult = arr[0][0] * arr[1][1] * arr[2][2];
+        suma += mult;
+        mult = arr[0][1] * arr[1][2] * arr[2][0];
+        suma += mult;
+        mult = arr[1][0] * arr[2][1] * arr[0][2];
+        suma += mult;
+        mult2 = arr[0][2] * arr[1][1] * arr[2][0];
+        suma2 += mult2;
+        mult2 = arr[0][1] * arr[1][0] * arr[2][2];
+        suma2 += mult2;
+        mult2 = arr[1][2] * arr[2][1] * arr[0][0];
+        suma2 += mult2;
+        m = suma - suma2;
+        System.out.println("El determinante es: " + m);
+
+    }
+
+    /*
 10. Realice un programa que realice la trasposición de una matriz de NxN sobre la diagonal
-secundaria.
-11. Generar una matriz de N×N con números aleatorios sin repetirse.
-12. Dada una matriz de tamaño NxN (impar), realice un método que me permita mostrar un cuadro
-de asteriscos (solo bordes), ej:
-* * * * *
-* - - - *
-* - - - *
-* - - - *
-* * * * *
-13. Dada una matriz de tamaño NxN (impar), realice un método que me permita mostrar una
-pirámide de asteriscos, ej:
-- - - - -
-- - - - -
-- - * - -
-- * * * -
-* * * * *
-14. Dada una matriz de tamaño NxN (impar), realice un método que me permita mostrar una
-pirámide invertida de asteriscos, ej:
-* * * * *
-- * * * -
-- - * - -
-- - - - -
-- - - - -
-15. Dada una matriz de tamaño NxN (impar), realice un método que me permita mostrar una cruz
-de asteriscos, ej:
-- - * - -
-- - * - -
-* * * * *
-- - * - -*/
+secundaria.*/
+    public void random(int n) {
+        Random random = new Random();
+        int[][] a = new int[n][n];
+        int contador = 0;
+
+        //--ASIGNAR LOS NUMERO ALEATORIOS
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a.length; j++) {
+
+                a[i][j] = random.nextInt(99 - 10 + 1) + 10;
+
+            }
+        }
+
+        System.out.print("Matriz generada\n");
+
+        for (int l = 0; l < a.length; l++) {
+            for (int k = 0; k < a[l].length; k++) {
+                System.out.printf("%d ", a[l][k]);
+            }
+            System.out.print("\n");
+        }
+
+    }
+
+    public void cuadros() {
+        int n = 9;
+        String[][] a = new String[n][n];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                a[i][j] = "-";
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            a[i][0] = "*";
+            a[i][n - 1] = "*";
+            a[0][i] = "*";
+            a[n - 1][i] = "*";
+        }
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print(a[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public void piramide() {
+        int n = 5;
+        int centro = n / 2;
+        String[][] a = new String[n][n];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                a[i][j] = "-";
+            }
+        }
+
+        for (int i = 0; i <= centro; i++) {
+            int asteriscos = 2 * i + 1;
+            int inicio = centro - i;
+
+            for (int j = 0; j < asteriscos; j++) {
+                a[i][inicio + j] = "*";
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print(a[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public void invertida() {
+
+        int n = 5;
+        String[][] matriz = new String[n][n];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matriz[i][j] = "-";
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            int asteriscos = n - 2 * i;
+            int inicio = i;
+
+            for (int j = 0; j < asteriscos; j++) {
+                matriz[n - 1 - i][inicio + j] = "*";
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print(matriz[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+    public void cruz(){
+             int n = 5;
+         int centro = n/2;
+        String[][] a = new String[n][n];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                a[i][j] = "-";
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            a[i][centro] = "*";        
+            a[centro][i] = "*";        
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print(a[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+    
+    
+    
+
+
+
 }
