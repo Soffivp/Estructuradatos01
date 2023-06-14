@@ -20,7 +20,7 @@ public class Ejecutar {
             op = obj.menu();
             switch (op) {
                 case 1: obj.insertar();
-                case 2: obj.eliminar();
+               // case 2: obj.eliminar();
                 case 3: obj.reporte('h');
                 case 4: obj.reporte('m');
                 case 5: obj.listar();
