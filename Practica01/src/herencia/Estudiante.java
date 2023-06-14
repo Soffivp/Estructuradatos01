@@ -5,6 +5,7 @@ package herencia;
 public class Estudiante extends Persona{
     private float[] calificaciones;
     Estudiante sig;
+    
 
     public Estudiante(int id,String nombre, char sexo,float[] calificaciones, Estudiante sig) {
         super(nombre, id, sexo);

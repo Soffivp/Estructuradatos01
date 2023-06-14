@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package herencia;
 
 import java.util.Locale;
@@ -102,7 +98,37 @@ public class Metodos {
             }
             actual = actual.sig;
         }
-
     }
 
+    public void eliminar() {
+        System.out.println("Ingrese el id del estuidante a eliminar");
+        int id = entrada.nextInt();
+
+        if (listaVacia()) {
+            System.out.println("No hay nada para eliminar");
+        } else {
+            if (id == head.id) {
+                head = head.sig;
+            } else {
+                Estudiante actual = head;
+                while (actual.sig != null && actual.sig.id != id) {
+                    actual = actual.sig;
+                    if (actual.sig == null)
+                        System.out.println("El registro no existe");
+                    else {
+                        actual.sig = actual.sig.sig;
+                        System.out.println("Estudiante eliminado correctamente");
+                    }
+                }
+            }
+        }
+    }
+    
+    /*
+    lista doblemente enlazada
+    hacer metodo de recorrer a la izq y a la der, eliminacion, agregacion,listar
+    
+    
+    */
+    
 }
