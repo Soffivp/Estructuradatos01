@@ -37,7 +37,6 @@ public class Metodos {
         System.out.println("6. Presentar reporte damas");
         System.out.println("7. Presentar reporte hombres");
 
-
         return entrada.nextInt();
     }
 
@@ -86,14 +85,13 @@ public class Metodos {
     }
 
     public NodoArbol insertar(NodoArbol actual, NodoArbol nuevo) {
-        if (arbolVacio()) {
+        if (arbolVacio()) 
             return nuevo;
-        } else if (nuevo.id > actual.id) {
+        else if (nuevo.id > actual.id)
             actual.der = insertar(actual.der, nuevo);
-        } else {
+        else 
             actual.izq = insertar(actual.izq, nuevo);
-        }
-
+        
         return actual;
     }
 
@@ -127,14 +125,15 @@ public class Metodos {
     }
 
     public void reporte(NodoArbol actual) {
-        if (actual != null) 
+        if (actual != null) {
             reporte(actual.izq);
-            if(actual.promedio >= 7)
-                System.out.println(actual.id + ": " + actual.nombre + "APROBADO\n");
-            else
-                System.out.println(actual.id + ": " + actual.nombre + "REPROBADO\n");
-            reporte(actual.der);
-
+        }
+        if (actual.promedio >= 7) {
+            System.out.println(actual.id + ": " + actual.nombre + "APROBADO\n");
+        } else {
+            System.out.println(actual.id + ": " + actual.nombre + "REPROBADO\n");
+        }
+        reporte(actual.der);
 
     }
 }
